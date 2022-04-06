@@ -5,8 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
 from sqlalchemy import MetaData
 
-from config import SERVICE_HOST, SERVICE_PORT, PGConfig, API_PATH, TICKET_PATH, \
-    TEST_USER, COMMENT_PATH, state_transitions, TicketState
+from config import PGConfig, API_PATH, TICKET_PATH, TEST_USER, COMMENT_PATH, state_transitions, TicketState
+
 
 # Настройка приложения
 DB_URL = 'postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}'.format(user=PGConfig.PG_USER,

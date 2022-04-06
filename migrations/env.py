@@ -7,7 +7,7 @@ from alembic import context
 
 from sqlalchemy import engine_from_config
 
-from config import PG_USER, PG_PASSWD, PG_DATABASE, PG_HOST, PG_PORT
+from config import PGConfig
 from server import DB_URL, db
 
 config = context.config
@@ -17,11 +17,11 @@ logger = logging.getLogger('alembic.env')
 
 config.set_main_option('sqlalchemy.url', DB_URL)
 section = config.config_ini_section
-config.set_section_option(section, 'DB_USER', PG_USER)
-config.set_section_option(section, 'DB_PASS', PG_PASSWD)
-config.set_section_option(section, 'DB_NAME', PG_DATABASE)
-config.set_section_option(section, 'DB_HOST', PG_HOST)
-config.set_section_option(section, 'DB_PORT', str(PG_PORT))
+config.set_section_option(section, 'DB_USER', PGConfig.PG_USER)
+config.set_section_option(section, 'DB_PASS', PGConfig.PG_PASSWD)
+config.set_section_option(section, 'DB_NAME', PGConfig.PG_DATABASE)
+config.set_section_option(section, 'DB_HOST', PGConfig.PG_HOST)
+config.set_section_option(section, 'DB_PORT', str(PGConfig.PG_PORT))
 config.set_section_option(section, 'alembic_table_schema', db.metadata.schema)
 target_metadata = db.metadata
 

@@ -26,7 +26,7 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('state', sa.String(length=10), nullable=False),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk__ticket')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_ticket')),
     schema='TEST'
     )
     op.create_table('comment',
@@ -35,8 +35,8 @@ def upgrade():
     sa.Column('ticket_id', sa.Integer(), nullable=False),
     sa.Column('text', sa.Text(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.ForeignKeyConstraint(['ticket_id'], ['TEST.ticket.id'], name=op.f('fk__comment__ticket_id__ticket')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk__comment')),
+    sa.ForeignKeyConstraint(['ticket_id'], ['TEST.ticket.id'], name=op.f('fk_comment_ticket_id_ticket')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_comment')),
     schema='TEST'
     )
     # ### end Alembic commands ###

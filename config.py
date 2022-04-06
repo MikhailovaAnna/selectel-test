@@ -9,6 +9,7 @@ TICKET_PATH = 'ticket'
 COMMENT_PATH = 'comment'
 
 
+# Состояния тикета
 class TicketState(enum.Enum):
     open = 'OPEN'
     answered = 'ANSWERED'
@@ -16,14 +17,17 @@ class TicketState(enum.Enum):
     waiting = 'WAITING'
 
 
+# Возможные переходы состояний тикета
 state_transitions = {
     TicketState.open.value: (TicketState.answered.value, TicketState.closed.value),
     TicketState.answered.value: (TicketState.waiting, TicketState.closed.value)
 }
 
+# Текущий пользователь
 TEST_USER = env('TEST_USER', 'mikhailova.anna.vadimovna@gmail.com')
 
 
+# Конфигурация для БД
 class PGConfig(object):
     PG_HOST = env('PG_HOST', 'localhost')
     PG_PORT = int(env('PG_PORT', 5432))
@@ -32,6 +36,7 @@ class PGConfig(object):
     PG_DATABASE = env('PG_DATABASE', 'postgres')
 
 
+# Конфигурация для Redis
 class CacheConfig(object):
     CACHE_TYPE = env('CACHE_TYPE', 'redis')
     CACHE_REDIS_HOST = env('CACHE_REDIS_HOST', 'localhost')
