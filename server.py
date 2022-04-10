@@ -5,15 +5,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
 from sqlalchemy import MetaData
 
-from config import PGConfig, API_PATH, TICKET_PATH, TEST_USER, COMMENT_PATH, state_transitions, TicketState
+from config import PG_USER, PG_PASSWD, PG_HOST, PG_PORT, PG_DATABASE, API_PATH, TICKET_PATH, TEST_USER, COMMENT_PATH, \
+    state_transitions, TicketState
 
 
 # Настройка приложения
-DB_URL = 'postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}'.format(user=PGConfig.PG_USER,
-                                                                             password=PGConfig.PG_PASSWD,
-                                                                             host=PGConfig.PG_HOST,
-                                                                             port=PGConfig.PG_PORT,
-                                                                             db=PGConfig.PG_DATABASE)
+DB_URL = 'postgresql+psycopg2://{user}:{password}@{host}:{port}/{db}'.format(user=PG_USER,
+                                                                             password=PG_PASSWD,
+                                                                             host=PG_HOST,
+                                                                             port=PG_PORT,
+                                                                             db=PG_DATABASE)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
